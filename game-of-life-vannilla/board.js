@@ -42,6 +42,7 @@ Board.prototype.initBoard = function () {
         changeCellStateHandler.bind(cellButtonEl, cell)
       );
       cellButtonEl.classList.add("cell__button");
+      cellButtonEl.textContent = `${cell.positionX}-${cell.positionY}`;
       if (cell.isAlive) cellButtonEl.classList.add("cell__button--alive");
       rowEl.appendChild(cellButtonEl);
       rowElements.push(cellButtonEl);

@@ -48,10 +48,13 @@
   border: 0.7px solid lightgrey;
   margin: 0;
   padding: 0;
+  font-size: 0.18rem;
+  color: white;
 }
 
 .cell__button:hover {
   background-color: lightgray;
+  color: darkgray;
 }
 
 .cell__button--alive {
