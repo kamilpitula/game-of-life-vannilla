@@ -1,9 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+#controls {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#controls button{
+    background-color: lightgrey;
+    border: none;
+    width: 8rem;
+    border: 1px solid darkgray;
+    border-radius: 4px;
+}
+
+#controls button:hover{
+    background-color: darkgray;
+}
+
+.board__row {
+  font-size: 0;
+}
+
 .cell__button {
-  height: 3rem;
-  width: 3rem;
+  height: 0.7rem;
+  width: 0.7rem;
   background-color: white;
+  border: 0.7px solid lightgrey;
+  margin: 0;
+  padding: 0;
+}
+
+.cell__button:hover {
+  background-color: lightgray;
 }
 
 .cell__button--alive {
   background-color: black;
+}
+
+.cell__button--alive:hover {
+  background-color: slategray;
 }

@@ -14,9 +14,6 @@ Cell.prototype.changeState = function () {
 };
 
 Cell.prototype.getNewState = function (aliveNeighboursCount) {
-  console.log(
-    `Updating state of cells ${this.positionX}, ${this.positionY}, n: ${aliveNeighboursCount}`
-  );
   let newState = false;
   if (!this.isAlive && aliveNeighboursCount === 3) {
     newState = true;

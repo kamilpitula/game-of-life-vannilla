@@ -2,7 +2,7 @@ import { Game } from "./game";
 import { Board } from "./board";
 import './style.css';
 
-const game = new Game(10, 10);
+const game = new Game(60, 60);
 const board = new Board("board", game);
 board.initBoard();
 game.setUpdateViewHandler(board.updateCellView.bind(board));
@@ -15,7 +15,7 @@ function tickHandler() {
 }
 
 function startGameHandler() {
-  interval = setInterval(tickHandler, 2000);
+  interval = setInterval(tickHandler, 500);
 }
 
 function stopGameHandler() {
