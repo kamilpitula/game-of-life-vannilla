@@ -4,11 +4,20 @@ function Cell(positionX, positionY, isAlive = false) {
   this.isAlive = isAlive;
 }
 
-Cell.prototype.makeAlive = function () {
-  this.isAlive = true;
+Cell.prototype.getPosition = function () {
+  return [this.positionX, this.positionY];
 };
 
-Cell.prototype.makeDead = function () {
+Cell.prototype.updateState = function (aliveNeighboursCount) {
+  console.log("Updating state...");
+  if (!this.isAlive && aliveNeighboursCount === 3) {
+    this.isAlive = true;
+    return;
+  }
+  if (this.isAlive &&(aliveNeighboursCount === 3 || aliveNeighboursCount === 2)) {
+    return;
+  }
+
   this.isAlive = false;
 };
 
