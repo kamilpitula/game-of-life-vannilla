@@ -11,6 +11,8 @@
 #game {
   display: flex;
   justify-content: center;
+  overflow: scroll;
+  padding: 0.2rem;
 }
 
 #controls {
@@ -36,6 +38,7 @@
 
 .board__row {
   font-size: 0;
+  white-space: nowrap;
 }
 
 .cell__button {
