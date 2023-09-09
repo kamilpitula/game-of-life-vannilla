@@ -24,6 +24,7 @@ Cell.prototype.getNewState = function (aliveNeighboursCount) {
   ) {
     newState = true;
   }
+
   const stateChanged = this.isAlive !== newState;
   return [stateChanged, newState];
 };

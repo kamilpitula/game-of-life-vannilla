@@ -40,8 +40,8 @@ function checkAdjacentCells(board, cell) {
   return aliveNeighboursCount;
 }
 
-Game.prototype.setUpdateViewHandler = function (onStateChanged) {
-  this.onCellStateChanged = onStateChanged;
+Game.prototype.setUpdateViewHandler = function (onCellStateChanged) {
+  this.onCellStateChanged = onCellStateChanged;
 };
 
 function updateCellState(newState, cell) {
@@ -50,8 +50,6 @@ function updateCellState(newState, cell) {
 }
 
 Game.prototype.tick = function () {
-  console.log("Tick");
-
   const updates = [];
 
   for (let row = 0; row < this.rows; row++) {

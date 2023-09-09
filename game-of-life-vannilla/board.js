@@ -22,13 +22,13 @@ function switchCellAppearance(btn, currentState) {
   }
 }
 
-Board.prototype.updateCellView = function (cell) {
-  console.log(cell);
+Board.prototype.handleCellStateChange = function (cell) {
   const btn = this.cellElements[cell.positionX][cell.positionY];
   switchCellAppearance(btn, cell.isAlive);
 };
 
 Board.prototype.initBoard = function () {
+  this.rootEl.innerHTML = "";
   const board = this.game.board;
   for (let row = 0; row < board.length; row++) {
     const rowEl = document.createElement("div");
