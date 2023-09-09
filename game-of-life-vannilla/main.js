@@ -1,9 +1,16 @@
 import { Game } from "./game";
+import { Board } from "./board";
+import './style.css';
 
 const game = new Game(10, 10);
+const board = new Board("board", game);
+board.initBoard();
+game.setUpdateViewHandler(board.updateCellView.bind(board));
+
+
 let interval = null;
 
-function tickHandler(){
+function tickHandler() {
   game.tick();
 }
 

@@ -40,16 +40,32 @@ function checkAdjacentCells(board, cell) {
   return aliveNeighboursCount;
 }
 
+Game.prototype.setUpdateViewHandler = function (onStateChanged) {
+  this.onCellStateChanged = onStateChanged;
+};
+
+function updateCellState(newState, cell) {
+  cell.isAlive = newState;
+  this.onCellStateChanged(cell);
+}
+
 Game.prototype.tick = function () {
   console.log("Tick");
+
+  const updates = [];
 
   for (let row = 0; row < this.rows; row++) {
     for (let column = 0; column < this.columns; column++) {
       const cell = this.board[row][column];
       const aliveCells = checkAdjacentCells(this.board, cell);
-      cell.updateState(aliveCells);
+      const [stateChanged, newState] = cell.getNewState(aliveCells);
+      if (stateChanged) {
+        updates.push(updateCellState.bind(this, newState, cell));
+      }
     }
   }
+
+  for (let update = 0; update < updates.length; update++) updates[update]();
 };
 
 export { Game };
