@@ -1,9 +1,14 @@
 * {
   box-sizing: border-box;
   background-color: whitesmoke;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
-#banner{
+
+body {
+  min-width: 900px;
+}
+
+#banner {
   display: flex;
   justify-content: center;
 }
@@ -11,7 +16,6 @@
 #game {
   display: flex;
   justify-content: center;
-  overflow: scroll;
   padding: 0.2rem;
 }
 
