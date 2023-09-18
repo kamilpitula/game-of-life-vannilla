@@ -39,6 +39,14 @@
   border: 1px solid darkgray;
   border-radius: 50%;
   margin: 0.3rem 0 0.3rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#controls button svg {
+  background-color: transparent;
 }
 
 #controls button:first-child {
@@ -47,6 +55,14 @@
 
 #controls button:hover {
   background-color: darkgray;
+}
+
+#controls button:disabled {
+  cursor: not-allowed;
+}
+
+#controls button:disabled svg * {
+  stroke: gray;
 }
 
 .board__row {
