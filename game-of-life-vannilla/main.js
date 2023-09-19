@@ -1,6 +1,7 @@
 import { Game } from "./game";
 import { Board } from "./board";
 import "./style.css";
+import { downloadFile } from "./downloadFile";
 
 let game = null;
 let board = null;
@@ -46,4 +47,6 @@ initGame();
 startBtn.addEventListener("click", startGameHandler);
 stopBtn.addEventListener("click", stopGameHandler);
 resetBtn.addEventListener("click", initGame);
-exportBtn.addEventListener("click", () => console.log("TODO: implement export!"));
+exportBtn.addEventListener("click", () =>
+  downloadFile("Test data", "pattern.life")
+);
