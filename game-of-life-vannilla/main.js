@@ -3,9 +3,11 @@ import { Board } from "./board";
 import "./style.css";
 import { downloadFile } from "./downloadFile";
 import { exportToLife106 } from "./life_106_exporter";
+import { Stats } from "./stats";
 
 let game = null;
 let board = null;
+let stats = null;
 
 let interval = null;
 
@@ -13,6 +15,7 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const resetBtn = document.getElementById("resetBtn");
 const exportBtn = document.getElementById("exportBtn");
+
 stopBtn.disabled = true;
 
 function tickHandler() {
@@ -44,9 +47,10 @@ function initGame() {
   stopGameHandler();
   game = new Game(60, 60);
   board = new Board("board", game);
+  stats = new Stats();
   board.initBoard();
   game.setUpdateViewHandler(board.handleCellStateChange.bind(board));
-  game.setOnTickHandler((tickData) => console.log(tickData));
+  game.setOnTickHandler(stats.handleStatsUpdate.bind(stats));
 }
 
 initGame();
