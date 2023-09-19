@@ -10,6 +10,7 @@ let interval = null;
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const resetBtn = document.getElementById("resetBtn");
+const exportBtn = document.getElementById("exportBtn");
 stopBtn.disabled = true;
 
 function tickHandler() {
@@ -21,6 +22,7 @@ function startGameHandler() {
   stopBtn.disabled = false;
   startBtn.disabled = true;
   resetBtn.disabled = true;
+  exportBtn.disabled = true;
 }
 
 function stopGameHandler() {
@@ -28,6 +30,7 @@ function stopGameHandler() {
   stopBtn.disabled = true;
   startBtn.disabled = false;
   resetBtn.disabled = false;
+  exportBtn.disabled = false;
 }
 
 function initGame() {
@@ -43,3 +46,4 @@ initGame();
 startBtn.addEventListener("click", startGameHandler);
 stopBtn.addEventListener("click", stopGameHandler);
 resetBtn.addEventListener("click", initGame);
+exportBtn.addEventListener("click", () => console.log("TODO: implement export!"));
