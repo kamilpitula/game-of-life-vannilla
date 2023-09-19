@@ -46,6 +46,7 @@ function initGame() {
   board = new Board("board", game);
   board.initBoard();
   game.setUpdateViewHandler(board.handleCellStateChange.bind(board));
+  game.setOnTickHandler((tickData) => console.log(tickData));
 }
 
 initGame();

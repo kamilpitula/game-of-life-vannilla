@@ -13,6 +13,7 @@ function Game(rows, columns) {
   this.board = board;
   this.rows = rows;
   this.columns = columns;
+  this.generation = 0;
 }
 
 function checkAdjacentCells(board, cell) {
@@ -44,6 +45,10 @@ Game.prototype.setUpdateViewHandler = function (onCellStateChanged) {
   this.onCellStateChanged = onCellStateChanged;
 };
 
+Game.prototype.setOnTickHandler = function (onTickHandler) {
+  this.onTickHandler = onTickHandler;
+};
+
 function updateCellState(newState, cell) {
   cell.isAlive = newState;
   this.onCellStateChanged(cell);
@@ -64,6 +69,12 @@ Game.prototype.tick = function () {
   }
 
   for (let update = 0; update < updates.length; update++) updates[update]();
+
+  this.generation++;
+  this.onTickHandler({
+    generationCount: this.generation,
+    aliveCells: this.board.flat().filter((c) => c.isAlive).length,
+  });
 };
 
 export { Game };
