@@ -23,7 +23,7 @@ function switchCellAppearance(btn, currentState) {
 }
 
 Board.prototype.handleCellStateChange = function (cell) {
-  const btn = this.cellElements[cell.positionX][cell.positionY];
+  const btn = this.cellElements[cell.positionY][cell.positionX];
   switchCellAppearance(btn, cell.isAlive);
 };
 

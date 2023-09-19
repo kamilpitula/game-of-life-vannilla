@@ -2,6 +2,7 @@ import { Game } from "./game";
 import { Board } from "./board";
 import "./style.css";
 import { downloadFile } from "./downloadFile";
+import { exportToLife106 } from "./life_106_exporter";
 
 let game = null;
 let board = null;
@@ -34,6 +35,11 @@ function stopGameHandler() {
   exportBtn.disabled = false;
 }
 
+function exportBoardHandler() {
+  const exportedBoard = exportToLife106(game.board);
+  downloadFile(exportedBoard, "pattern.life");
+}
+
 function initGame() {
   stopGameHandler();
   game = new Game(60, 60);
@@ -47,6 +53,4 @@ initGame();
 startBtn.addEventListener("click", startGameHandler);
 stopBtn.addEventListener("click", stopGameHandler);
 resetBtn.addEventListener("click", initGame);
-exportBtn.addEventListener("click", () =>
-  downloadFile("Test data", "pattern.life")
-);
+exportBtn.addEventListener("click", exportBoardHandler);

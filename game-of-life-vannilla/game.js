@@ -6,7 +6,7 @@ function Game(rows, columns) {
   for (let row = 0; row < rows; row++) {
     const rows = [];
     for (let column = 0; column < columns; column++) {
-      rows.push(new Cell(row, column, false));
+      rows.push(new Cell(column, row, false));
     }
     board.push(rows);
   }
@@ -21,13 +21,13 @@ function checkAdjacentCells(board, cell) {
   const columnCount = board[0].length;
 
   let aliveNeighboursCount = 0;
-  for (let row = x - 1; row <= x + 1 && row < rowCount; row++) {
+  for (let row = y - 1; row <= y + 1 && row < rowCount; row++) {
     for (
-      let column = y - 1;
-      column <= y + 1 && column < columnCount;
+      let column = x - 1;
+      column <= x + 1 && column < columnCount;
       column++
     ) {
-      if (row === x && column === y) continue;
+      if (row === y && column === x) continue;
       if (row < 0 || column < 0) continue;
 
       const currentNeighbour = board[row][column];
