@@ -1,5 +1,6 @@
 import { Game } from "./Model/game.js";
 import { Board } from "./UI/board.js";
+import { Modal } from "./UI/modal.js";
 import "./style.css";
 import { downloadFile } from "./Utils/downloadFile.js";
 import { exportToLife106 } from "./Utils/life_106_exporter.js";
@@ -15,8 +16,10 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const resetBtn = document.getElementById("resetBtn");
 const exportBtn = document.getElementById("exportBtn");
+const settingsButton = document.getElementById("settingsBtn");
 
 stopBtn.disabled = true;
+const settingModal = new Modal("modal");
 
 function tickHandler() {
   game.tick();
@@ -59,3 +62,4 @@ startBtn.addEventListener("click", startGameHandler);
 stopBtn.addEventListener("click", stopGameHandler);
 resetBtn.addEventListener("click", initGame);
 exportBtn.addEventListener("click", exportBoardHandler);
+settingsButton.addEventListener('click', settingModal.openModal.bind(settingModal));
