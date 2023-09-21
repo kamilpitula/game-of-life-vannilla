@@ -5,6 +5,7 @@ import "./style.css";
 import { downloadFile } from "./Utils/downloadFile.js";
 import { exportToLife106 } from "./Utils/life_106_exporter.js";
 import { Stats } from "./UI/stats.js";
+import { SettingsView } from "./UI/settingsView.js";
 
 let game = null;
 let board = null;
@@ -46,9 +47,14 @@ function exportBoardHandler() {
   downloadFile(exportedBoard, "pattern.life");
 }
 
-function initGame() {
+function initGame(settings) {
+  if (!settings)
+    settings = {
+      width: 60,
+      height: 60,
+    };
   stopGameHandler();
-  game = new Game(60, 60);
+  game = new Game(settings);
   board = new Board("board", game);
   stats = new Stats();
   board.initBoard();
@@ -60,6 +66,17 @@ initGame();
 
 startBtn.addEventListener("click", startGameHandler);
 stopBtn.addEventListener("click", stopGameHandler);
-resetBtn.addEventListener("click", initGame);
+resetBtn.addEventListener(
+  "click",
+  initGame.bind(null, { width: 60, height: 60 })
+);
 exportBtn.addEventListener("click", exportBoardHandler);
-settingsButton.addEventListener('click', settingModal.openModal.bind(settingModal));
+settingsButton.addEventListener("click", () => {
+  settingModal.openModal();
+  const settings = new SettingsView("settings_template", "modal_content");
+  settings.setOnAcceptHandler((s) => {
+    initGame(s);
+    settingModal.closeModal();
+  });
+  settings.setOnCancelHandler(() => settingModal.closeModal());
+});
