@@ -68,6 +68,14 @@ main {
   stroke: gray;
 }
 
+.control_button:hover {
+  background-color: darkgray;
+}
+
+.control_button:disabled {
+  cursor: not-allowed;
+}
+
 .settingsControls {
   display: flex;
   flex-direction: row;
@@ -85,14 +93,6 @@ main {
 
 #controls button:first-child {
   margin-top: 0;
-}
-
-#controls button:hover {
-  background-color: darkgray;
-}
-
-#controls button:disabled {
-  cursor: not-allowed;
 }
 
 #gameStats {
@@ -154,4 +154,13 @@ main {
 
 #settings label {
   display: block;
+}
+
+input {
+  border: solid 0.5px black;
+  border-radius: 5px;
+}
+
+input:focus, input:active {
+  border: solid 0.5px black;
 }
