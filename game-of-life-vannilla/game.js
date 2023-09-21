@@ -45,8 +45,18 @@ Game.prototype.setUpdateViewHandler = function (onCellStateChanged) {
   this.onCellStateChanged = onCellStateChanged;
 };
 
-Game.prototype.setOnTickHandler = function (onTickHandler) {
-  this.onTickHandler = onTickHandler;
+Game.prototype.setOnGameStateChangeHandler = function (onTickHandler) {
+  this.onGameStateChanged = onTickHandler;
+};
+
+Game.prototype.changeCellState = function (cell) {
+  const newState = cell.changeState();
+  this.onCellStateChanged(cell);
+  this.onGameStateChanged({
+    generationCount: this.generation,
+    aliveCells: this.board.flat().filter((c) => c.isAlive).length,
+  });
+  return newState;
 };
 
 function updateCellState(newState, cell) {
@@ -71,7 +81,7 @@ Game.prototype.tick = function () {
   for (let update = 0; update < updates.length; update++) updates[update]();
 
   this.generation++;
-  this.onTickHandler({
+  this.onGameStateChanged({
     generationCount: this.generation,
     aliveCells: this.board.flat().filter((c) => c.isAlive).length,
   });

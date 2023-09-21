@@ -8,23 +8,17 @@ function Board(hookEl, game) {
   this.cellElements = [];
 }
 
-function changeCellStateHandler(cell) {
-  console.log(cell.positionX, cell.positionY);
-  const currentState = cell.changeState();
-  switchCellAppearance(this, currentState);
-}
-
-function switchCellAppearance(btn, currentState) {
-  if (currentState) {
-    btn.classList.add("cell__button--alive");
-  } else {
-    btn.classList.remove("cell__button--alive");
-  }
+function changeCellStateHandler(game, cell) {
+  game.changeCellState(cell);
 }
 
 Board.prototype.handleCellStateChange = function (cell) {
   const btn = this.cellElements[cell.positionY][cell.positionX];
-  switchCellAppearance(btn, cell.isAlive);
+  if (cell.isAlive) {
+    btn.classList.add("cell__button--alive");
+  } else {
+    btn.classList.remove("cell__button--alive");
+  }
 };
 
 Board.prototype.initBoard = function () {
@@ -39,7 +33,7 @@ Board.prototype.initBoard = function () {
       const cellButtonEl = document.createElement("button");
       cellButtonEl.addEventListener(
         "click",
-        changeCellStateHandler.bind(cellButtonEl, cell)
+        changeCellStateHandler.bind(cellButtonEl, this.game, cell)
       );
       cellButtonEl.classList.add("cell__button");
       cellButtonEl.textContent = `${cell.positionX}-${cell.positionY}`;

@@ -50,7 +50,7 @@ function initGame() {
   stats = new Stats();
   board.initBoard();
   game.setUpdateViewHandler(board.handleCellStateChange.bind(board));
-  game.setOnTickHandler(stats.handleStatsUpdate.bind(stats));
+  game.setOnGameStateChangeHandler(stats.handleStatsUpdate.bind(stats));
 }
 
 initGame();
