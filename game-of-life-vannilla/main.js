@@ -1,9 +1,9 @@
-import { Game } from "./game";
-import { Board } from "./board";
+import { Game } from "./Model/game.js";
+import { Board } from "./UI/board.js";
 import "./style.css";
-import { downloadFile } from "./downloadFile";
-import { exportToLife106 } from "./life_106_exporter";
-import { Stats } from "./stats";
+import { downloadFile } from "./Utils/downloadFile.js";
+import { exportToLife106 } from "./Utils/life_106_exporter.js";
+import { Stats } from "./UI/stats.js";
 
 let game = null;
 let board = null;
