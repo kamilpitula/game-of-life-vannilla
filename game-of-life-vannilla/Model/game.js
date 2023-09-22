@@ -68,12 +68,14 @@ function updateCellState(newState, cell) {
 
 Game.prototype.tick = function () {
   const updates = [];
+  let aliveCellsCounter = 0;
 
   for (let row = 0; row < this.rows; row++) {
     for (let column = 0; column < this.columns; column++) {
       const cell = this.board[row][column];
       const aliveCells = checkAdjacentCells(this.board, cell);
       const [stateChanged, newState] = cell.getNewState(aliveCells);
+      if (newState) aliveCellsCounter++;
       if (stateChanged) {
         updates.push(updateCellState.bind(this, newState, cell));
       }
@@ -85,7 +87,7 @@ Game.prototype.tick = function () {
   this.generation++;
   this.onGameStateChanged({
     generationCount: this.generation,
-    aliveCells: this.board.flat().filter((c) => c.isAlive).length,
+    aliveCells: aliveCellsCounter,
   });
 };
 

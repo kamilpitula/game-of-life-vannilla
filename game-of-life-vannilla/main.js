@@ -12,6 +12,7 @@ let board = null;
 let stats = null;
 
 let interval = null;
+let running = true;
 
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
@@ -24,10 +25,12 @@ const settingModal = new Modal("modal");
 
 function tickHandler() {
   game.tick();
+  if (running) requestAnimationFrame(tickHandler);
 }
 
 function startGameHandler() {
-  interval = setInterval(tickHandler, 50);
+  running = true;
+  interval = requestAnimationFrame(tickHandler);
   stopBtn.disabled = false;
   startBtn.disabled = true;
   resetBtn.disabled = true;
@@ -35,7 +38,8 @@ function startGameHandler() {
 }
 
 function stopGameHandler() {
-  if (interval) clearInterval(interval);
+  running = false;
+  if (interval) cancelAnimationFrame(interval);
   stopBtn.disabled = true;
   startBtn.disabled = false;
   resetBtn.disabled = false;
