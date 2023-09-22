@@ -47,39 +47,55 @@ main {
   left: 0.5rem;
 }
 
-#controls button {
+.control_button {
   background-color: lightgrey;
   border: none;
   width: 2rem;
   height: 2rem;
   border: 1px solid darkgray;
   border-radius: 50%;
-  margin: 0.3rem 0 0.3rem 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-#controls button svg {
+.control_button svg {
   background-color: transparent;
+}
+
+.control_button:disabled svg * {
+  stroke: gray;
+}
+
+.control_button:hover {
+  background-color: darkgray;
+}
+
+.control_button:disabled {
+  cursor: not-allowed;
+}
+
+.settingsControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.settingsControls .control_button {
+  margin: 2rem 0.4rem 0rem 0.4rem;
+}
+
+#controls button {
+  margin: 0.3rem 0 0.3rem 0;
 }
 
 #controls button:first-child {
   margin-top: 0;
 }
 
-#controls button:hover {
-  background-color: darkgray;
-}
 
-#controls button:disabled {
-  cursor: not-allowed;
-}
-
-#controls button:disabled svg * {
-  stroke: gray;
-}
 
 #gameStats {
   display: flex;
@@ -115,4 +131,38 @@ main {
 
 .cell__button--alive:hover {
   background-color: slategray;
+}
+
+#modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#modal_content {
+  max-width: 400px;
+  width: 80%;
+  margin: 20% auto;
+}
+
+#settings {
+  padding: 2rem;
+}
+
+#settings label {
+  display: block;
+}
+
+input {
+  border: solid 0.5px black;
+  border-radius: 5px;
+}
+
+input:focus, input:active {
+  border: solid 0.5px black;
 }

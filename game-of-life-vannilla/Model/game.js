@@ -1,6 +1,8 @@
 import { Cell } from "./cell.js";
 
-function Game(rows, columns) {
+function Game(settings) {
+  const rows = settings.height;
+  const columns = settings.width;
   const board = [];
 
   for (let row = 0; row < rows; row++) {

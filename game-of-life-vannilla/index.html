@@ -8,13 +8,68 @@
     <link rel="stylesheet" src="./style.css" />
   </head>
   <body>
+    <div id="modal">
+      <div id="modal_content"></div>
+    </div>
+    <template id="settings_template">
+      <div id="settings">
+        <h1>Settings</h1>
+        <label for="widthInput">Width</label>
+        <input type="number" id="widthInput" name="widthInput" value="60"/>
+        <label for="heightInput">Height</label>
+        <input type="number" id="heightInput" name="heightInput" value="60"/>
+        <div class="settingsControls">
+          <button id="cancelSettingsBtn" class="control_button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <button id="acceptSettignsBtn" class="control_button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M8.5 12.5L10.5 14.5L15.5 9.5"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </template>
     <header id="banner">
       <h1>Conway's game of life</h1>
     </header>
     <main>
       <section id="game">
         <header id="controls">
-          <button id="startBtn">
+          <button id="startBtn" class="control_button">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -28,7 +83,7 @@
               />
             </svg>
           </button>
-          <button id="stopBtn">
+          <button id="stopBtn" class="control_button">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -41,7 +96,7 @@
               />
             </svg>
           </button>
-          <button id="resetBtn">
+          <button id="resetBtn" class="control_button">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -63,7 +118,7 @@
               </defs>
             </svg>
           </button>
-          <button id="exportBtn">
+          <button id="exportBtn" class="control_button">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -87,6 +142,59 @@
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button id="settingsBtn" class="control_button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <circle
+                cx="8"
+                cy="10"
+                r="2"
+                stroke="#1C274C"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="2"
+                cy="2"
+                r="2"
+                transform="matrix(1 0 0 -1 14 16)"
+                stroke="#1C274C"
+                stroke-width="1.5"
+              />
+              <path
+                d="M8 14V19"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 10V5"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M8 5V6"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 19V18"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8"
+                stroke="#1C274C"
+                stroke-width="1.5"
+                stroke-linecap="round"
               />
             </svg>
           </button>
