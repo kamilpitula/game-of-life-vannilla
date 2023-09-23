@@ -102,6 +102,11 @@ main {
   justify-content: space-around;
   font-size: small;
   font-weight: bold;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  height: 4rem;
 }
 
 .board__row {
