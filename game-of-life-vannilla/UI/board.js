@@ -38,10 +38,8 @@ Board.prototype.initBoard = function () {
     for (let column = 0; column < board[row].length; column++) {
       const cell = board[row][column];
       const cellButtonEl = buttonProto.cloneNode(true);
-      cellButtonEl.addEventListener(
-        "click",
-        changeCellStateHandler.bind(cellButtonEl, this.game, cell)
-      );
+      cellButtonEl.dataset.row = row;
+      cellButtonEl.dataset.column = column;
       if (cell.isAlive) cellButtonEl.classList.add("cell__button--alive");
       rowEl.appendChild(cellButtonEl);
       rowElements.push(cellButtonEl);
@@ -51,7 +49,17 @@ Board.prototype.initBoard = function () {
   }
 
   boardElement.appendChild(documentFragment);
-  
+  boardElement.addEventListener("click", (e) => {
+    if (e.target.matches("button.cell__button")) {
+      const cellButtonEl = e.target;
+      console.log(e.target);
+      const row = cellButtonEl.dataset.row;
+      const column = cellButtonEl.dataset.column;
+      const cell = this.game.board[row][column];
+      changeCellStateHandler(this.game, cell);
+    }
+  });
+
   this.rootEl.replaceWith(boardElement);
   this.rootEl = boardElement;
 };
