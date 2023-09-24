@@ -52,7 +52,6 @@ Board.prototype.initBoard = function () {
   boardElement.addEventListener("click", (e) => {
     if (e.target.matches("button.cell__button")) {
       const cellButtonEl = e.target;
-      console.log(e.target);
       const row = cellButtonEl.dataset.row;
       const column = cellButtonEl.dataset.column;
       const cell = this.game.board[row][column];
