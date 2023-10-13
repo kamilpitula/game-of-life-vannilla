@@ -1,10 +1,13 @@
+import style from '../style.css?inline';
 export class SettingsComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this.opened = false;
     this.shadowRoot.innerHTML = `
-    <link href="style.css" rel="stylesheet" type="text/css"> 
+    <style>
+    ${style}
+    </style>
     <div id="modal">
       <div id="modal_content">
         <div id="settings">
