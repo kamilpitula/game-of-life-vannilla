@@ -2,6 +2,7 @@ export class SettingsComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.opened = false;
     this.shadowRoot.innerHTML = `
     <link href="style.css" rel="stylesheet" type="text/css"> 
     <div id="modal">
@@ -59,5 +60,25 @@ export class SettingsComponent extends HTMLElement {
         </div>
     </div>
     `;
+  }
+
+  connectedCallback() {
+    this.modalEl = this.shadowRoot.querySelector("#modal");
+    this.cancelBtn = this.shadowRoot.getElementById("cancelSettingsBtn");
+    this.cancelBtn.addEventListener("click", this.close.bind(this));
+    this.modalEl.addEventListener("click", this.close.bind(this));
+    this.modalEl
+      .querySelector("div")
+      .addEventListener("click", (e) => e.stopPropagation());
+  }
+
+  open() {
+    if (this.modalEl.hasAttribute("opened")) return;
+    this.modalEl.setAttribute("opened", "");
+  }
+
+  close() {
+    if (!this.modalEl.hasAttribute("opened")) return;
+    this.modalEl.removeAttribute("opened");
   }
 }

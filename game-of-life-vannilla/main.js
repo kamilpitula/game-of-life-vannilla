@@ -78,12 +78,18 @@ resetBtn.addEventListener(
   initGame.bind(null, { width: 60, height: 60 })
 );
 exportBtn.addEventListener("click", exportBoardHandler);
+// settingsButton.addEventListener("click", () => {
+//   settingModal.openModal();
+//   const settings = new SettingsView("settings_template", "modal_content");
+//   settings.setOnAcceptHandler((s) => {
+//     initGame(s);
+//     settingModal.closeModal();
+//   });
+//   settings.setOnCancelHandler(() => settingModal.closeModal());
+// });
+
+const settingsComponent = document.querySelector('gol-settings');
+
 settingsButton.addEventListener("click", () => {
-  settingModal.openModal();
-  const settings = new SettingsView("settings_template", "modal_content");
-  settings.setOnAcceptHandler((s) => {
-    initGame(s);
-    settingModal.closeModal();
-  });
-  settings.setOnCancelHandler(() => settingModal.closeModal());
+  settingsComponent.open();
 });
