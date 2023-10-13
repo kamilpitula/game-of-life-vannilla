@@ -1,14 +1,12 @@
 import { Game } from "./Model/game.js";
 import { Board } from "./UI/board.js";
-import { Modal } from "./UI/modal.js";
 import "./style.css";
 import { downloadFile } from "./Utils/downloadFile.js";
 import { exportToLife106 } from "./Utils/life_106_exporter.js";
 import { Stats } from "./UI/stats.js";
-import { SettingsView } from "./UI/settingsView.js";
 import { SettingsComponent } from "./UI/settingsComponent.js";
 
-customElements.define('gol-settings', SettingsComponent);
+customElements.define("gol-settings", SettingsComponent);
 
 let game = null;
 let board = null;
@@ -24,7 +22,6 @@ const exportBtn = document.getElementById("exportBtn");
 const settingsButton = document.getElementById("settingsBtn");
 
 stopBtn.disabled = true;
-const settingModal = new Modal("modal");
 
 function tickHandler() {
   game.tick();
@@ -78,17 +75,11 @@ resetBtn.addEventListener(
   initGame.bind(null, { width: 60, height: 60 })
 );
 exportBtn.addEventListener("click", exportBoardHandler);
-// settingsButton.addEventListener("click", () => {
-//   settingModal.openModal();
-//   const settings = new SettingsView("settings_template", "modal_content");
-//   settings.setOnAcceptHandler((s) => {
-//     initGame(s);
-//     settingModal.closeModal();
-//   });
-//   settings.setOnCancelHandler(() => settingModal.closeModal());
-// });
 
-const settingsComponent = document.querySelector('gol-settings');
+const settingsComponent = document.querySelector("gol-settings");
+settingsComponent.setOnAcceptHandler((s) => {
+  initGame(s);
+});
 
 settingsButton.addEventListener("click", () => {
   settingsComponent.open();

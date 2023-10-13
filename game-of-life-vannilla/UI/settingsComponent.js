@@ -70,6 +70,12 @@ export class SettingsComponent extends HTMLElement {
     this.modalEl
       .querySelector("div")
       .addEventListener("click", (e) => e.stopPropagation());
+
+    this.widthInput = this.shadowRoot.getElementById("widthInput");
+    this.heightInput = this.shadowRoot.getElementById("heightInput");
+
+    const acceptButton = this.shadowRoot.getElementById("acceptSettignsBtn");
+    acceptButton.addEventListener("click", this.accept.bind(this));
   }
 
   open() {
@@ -80,5 +86,20 @@ export class SettingsComponent extends HTMLElement {
   close() {
     if (!this.modalEl.hasAttribute("opened")) return;
     this.modalEl.removeAttribute("opened");
+  }
+
+  accept() {
+    const width = +this.widthInput.value;
+    const height = +this.heightInput.value;
+
+    console.log(width, height);
+    
+    if (this.onAcceptHandler)
+      this.onAcceptHandler({ width: width, height: height });
+    this.close();
+  }
+
+  setOnAcceptHandler(handler) {
+    this.onAcceptHandler = handler;
   }
 }
