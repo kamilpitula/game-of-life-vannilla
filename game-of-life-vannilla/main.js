@@ -6,6 +6,9 @@ import { downloadFile } from "./Utils/downloadFile.js";
 import { exportToLife106 } from "./Utils/life_106_exporter.js";
 import { Stats } from "./UI/stats.js";
 import { SettingsView } from "./UI/settingsView.js";
+import { SettingsComponent } from "./UI/settingsComponent.js";
+
+customElements.define('gol-settings', SettingsComponent);
 
 let game = null;
 let board = null;
